@@ -6,7 +6,7 @@ Game.MainMenu = function(game) {
 startC = function() {
     
     //Regarde si il faut charger une nouvelle partie ou charge l'ancienne
-    if(Ptext == 'Play'){
+    if(Ptext == 'PLAY'){
         this.state.start('MainGame')
     } else {
         this.state.start('CharacterSelect')
@@ -66,7 +66,7 @@ Game.MainMenu.prototype = {
         
         //Si une sauvegarde existe presente l'option de commencer une nouvelle partie
         if(localStorage['save']){
-            Ngame = this.add.text(448, 522, Ptext);
+            Ngame = this.add.image(448, 522, 'NEWG');
             Ngame.inputEnabled = true
             Ngame.events.onInputDown.add(startC_N, this);
         

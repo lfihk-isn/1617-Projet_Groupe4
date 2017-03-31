@@ -70,27 +70,27 @@ Game.Battle.prototype =  {
                var answerText = this.add.text(0, 200, answers, Bstyle);
                
                AnswerPod.events.onInputDown.add(Aclicked, this)
+               
+               function Aclicked(event){
+                    var x1 = w/2 - AnswerPod.width/2;
+                    var y1 = h/2 - AnswerPod.height/2;
+                    
+                    var x = event.x - x1;
+                    var y = event.y - y1;
+
+                    // Calculate the choice 
+                    var choise = Math.floor(x / 90) + 3*Math.floor(y / 90);
+                    console.log(choise)
+               }
             }
        }           
            
-           //Add answer System
+           
            
            
                 
            
-       },
-           
-        Aclicked: function(event){
-            
-            var x1 = w/2 - 270/2;
-            var y1 = h/2 - 180/2;
-            var x = event.x - x1;
-            var y = event.y - y1;
-
-            // Calculate the choice 
-            var choise = Math.floor(x / 90) + 3*Math.floor(y / 90);
-            console.log(choise)
-        }
+       }    
     }
 
 

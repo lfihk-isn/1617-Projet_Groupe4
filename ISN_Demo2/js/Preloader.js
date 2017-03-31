@@ -26,10 +26,10 @@ Game.Preloader.prototype = {
         
         //UI
         //MainMenu
-        this.load.image('MainMenu','assets/UI/MainMenu.png')
-        this.load.image('PLAY','assets/UI/BouttonJouer.png')
-        this.load.image('NEWG','assets/UI/BouttonNouveau.png')
-        this.load.image('Credit','assets/UI/BouttonCredits.png')
+        this.load.image('MainMenu','assets/UI/MainMenu_nobuttons.png')
+        this.load.image('NEWG','assets/UI/BoutonNouveau.png')
+        this.load.image('PLAY','assets/UI/BoutonJouer.png')
+        this.load.image('Credit','assets/UI/BoutonCredits.png')
         
         //Enemy
         this.load.image('Bomby','assets/Enemy/Sprite/Bomby.png')
