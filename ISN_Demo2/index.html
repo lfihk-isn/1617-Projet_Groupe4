@@ -1,0 +1,43 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ISN Demo1</title>
+  <meta name="author" content="ImOverlord">
+  <meta name="description" content="ISN RPG Demo Progect V1.0">
+      
+      <script src='lib/phaser.js'></script>
+      <script src='https://hammerjs.github.io/dist/hammer.js'></script>
+      
+      <script src='js/boot.js'></script>
+      <script src='js/Preloader.js'></script>
+      <script src='js/MainMenu.js'></script>
+      <script src='js/MainGame.js'></script>
+      <script src='js/CharacterSelect.js'></script>
+      <script src='js/Battle.js'></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"> </script>
+  </head>
+  <body>
+    <script>
+        window.onload = function() {
+            
+            var game = new Phaser.Game(1080, 720, Phaser.AUTO, '');
+            
+            //Declare States
+            game.state.add('Boot',Game.Boot);
+            game.state.add('Preloader',Game.Preloader);
+            game.state.add('MainMenu',Game.MainMenu);
+            game.state.add('MainGame',Game.MainGame);
+            game.state.add('CharacterSelect',Game.CharacterSelect);
+            game.state.add('Battle',Game.Battle);
+            //Add About 
+            
+            //Start
+            game.state.start('Boot');
+        }
+          
+    </script>
+
+  </body>
+</html>
