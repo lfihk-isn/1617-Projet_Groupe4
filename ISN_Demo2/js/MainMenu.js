@@ -54,13 +54,13 @@ Game.MainMenu.prototype = {
         if (localStorage['save']){ //Cherche si un esauvegarde Existe et chnage le Menu Pour proposer de charger l'ancienne partie
             Ptext = 'PLAY'
         } else{
-            Ptext = 'New'
+            Ptext = 'NEWG'
         }
         Play = this.add.image(448, 291, Ptext);
         Play.inputEnabled = true
         Play.events.onInputDown.add(startC, this);
         
-        About = this.add.text(448, 408,Credit);
+        About = this.add.image(448, 408,'Credit');
         About.inputEnabled = true
         About.events.onInputDown.add(about, this);
         
