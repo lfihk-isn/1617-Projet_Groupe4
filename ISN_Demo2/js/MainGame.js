@@ -155,34 +155,29 @@ Game.MainGame.prototype =  {
 		this.physics.arcade.collide(players,walls) //Collision
 		player.body.velocity.x = 0;
 		player.body.velocity.y = 0;
+		
 
         if(controls.up.isDown) {
 			player.body.velocity.y -= 250;
 			player.angle = 0
             player.animations.play('walk',10)   
-		} else {
-            //player.animations.play('idle')
-        }
+		} else
 		if(controls.down.isDown) {
 			player.body.velocity.y += 250;
 			player.angle = 180
             player.animations.play('walk',10)
-		} else {
-            //player.animations.play('idle')
-        }
+		} else 
 		if(controls.left.isDown) {
 			player.body.velocity.x -= 250;
 			player.angle = -90	
             player.animations.play('walk',10)
-		} else {
-            //player.animations.play('idle')
-        }
+		} else
 		if(controls.right.isDown) {
 			player.body.velocity.x += 250;
 			player.angle = 90
             player.animations.play('walk',10)
 		} else {
-            //player.animations.play('idle')
+            player.animations.stop()
         }
         
         if(controls.esc.isDown){
