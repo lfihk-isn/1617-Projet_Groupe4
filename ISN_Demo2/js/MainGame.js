@@ -127,6 +127,9 @@ Game.MainGame.prototype =  {
         function enemySpawn() {
             
             //Add battel chance
+			this.save
+			//Reset 
+			ELive = 100;
             this.state.start('Battle')
         }
         

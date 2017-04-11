@@ -6,7 +6,7 @@ Game.Preloader.prototype = {
     
     preload:function(){
             
-        
+		//TEMP Items will be removed when all assets have been created
         this.load.image('player','assets/player.png')
         this.load.image('brick','assets/brick.png')
         this.load.image('keeper','assets/Keep.png')
