@@ -1,5 +1,6 @@
 Game.Preloader = function(game) {
-    
+    w = 1080
+	h = 720
 };
 
 Game.Preloader.prototype = {
@@ -30,6 +31,8 @@ Game.Preloader.prototype = {
         this.load.image('NEWG','assets/UI/BoutonNouveau.png')
         this.load.image('PLAY','assets/UI/BoutonJouer.png')
         this.load.image('Credit','assets/UI/BoutonCredits.png')
+        this.load.image('GameOver','assets/UI/GameOver.jpg')
+		this.load.image('PauseMenu','assets/UI/PauseScreen.png')
         
         //Enemy
         this.load.image('Bomby','assets/Enemy/Sprite/Bomby.png')
@@ -40,9 +43,12 @@ Game.Preloader.prototype = {
         //Map
         this.load.image('ground','assets/Map/Ground.png')
         
+		
+		//Style
+		Bstyle = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+		
         //Vars
-        w = 1080
-        h = 720
+		//transfer all vars declaraation here
     },
     
     create:function(){

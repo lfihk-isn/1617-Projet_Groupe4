@@ -63,7 +63,7 @@ Game.MainGame.prototype =  {
             
             
             //Menu
-            menu = this.add.sprite(w/2, h/2,'menu');
+            menu = this.add.sprite(w/2, h/2,'PauseMenu');
             menu.anchor.setTo(0.5, 0.5);
             menu.x = (this.camera.x)  + w/2
             menu.y = (this.camera.y)  + h/2
@@ -79,29 +79,32 @@ Game.MainGame.prototype =  {
         if(typeof QP == 'undefined') {
             if(this.game.paused){ // Check if paused to appyly pause settings
                 //Boundaries
-                var x1 = w/2 - 270/2, x2 = w/2 + 270/2,
-                    y1 = h/2 - 180/2, y2 = h/2 + 180/2;
+                var x1 = 409, x2 = 678,
+                    y1 = 312, y2 = 401;
 
-
+				
+				
                 if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2 & typeof menu != 'undefined'){
                     //INSIDE
-                    if (event.x > x1 & event.x < (x1+90) & event.y > y1 & event.y < y1 + 90) {
-                        // Resume button
+					x = event.x - x1
+					y = event.y - y1
+					var choise =  Math.floor(x / 90)
+					if(choise == 0) {
+						// Resume button
                         console.log('Resume')
                         menu.destroy();
                         this.game.paused = false;
-                    }
-
-                    if (event.x > x1+90 & event.x < (x1+90*2) & event.y > y1 & event.y < y1+90){
-                        //Option
+					}else if(choise == 1){
+						//Option //NOT YET Finished
                         console.log('Option')
-                    }
-
-                    if (event.x > x1+90*2 & event.x < (x1+90*3) & event.y > y1 & event.y < y1+90){
-                        //Save
+					}else if(choise == 2){
+						//Save
                         console.log('Save')
                         this.save()
-                    }
+					} else { //ERROR
+					}
+					
+                    
 
                 }
                 else if (typeof menu != 'undefined'){
@@ -188,7 +191,7 @@ Game.MainGame.prototype =  {
             
             
             //Menu
-            menu = this.add.sprite(w/2, h/2,'menu');
+            menu = this.add.sprite(w/2, h/2,'PauseMenu');
             menu.anchor.setTo(0.5, 0.5);
             menu.x = (this.camera.x)  + w/2
             menu.y = (this.camera.y)  + h/2

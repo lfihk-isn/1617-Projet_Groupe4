@@ -17,6 +17,7 @@
       <script src='js/MainGame.js'></script>
       <script src='js/CharacterSelect.js'></script>
       <script src='js/Battle.js'></script>
+      <script src='js/GameOver.js'></script>
 
   </head>
   <body>
@@ -24,7 +25,8 @@
         window.onload = function() {
             
             var game = new Phaser.Game(1080, 720, Phaser.AUTO, '');
-            
+            w = game.width
+			h = game.height
             //Declare States
             game.state.add('Boot',Game.Boot);
             game.state.add('Preloader',Game.Preloader);
@@ -32,6 +34,7 @@
             game.state.add('MainGame',Game.MainGame);
             game.state.add('CharacterSelect',Game.CharacterSelect);
             game.state.add('Battle',Game.Battle);
+            game.state.add('GameOver',Game.GameOver);
             //Add About 
             
             //Start
