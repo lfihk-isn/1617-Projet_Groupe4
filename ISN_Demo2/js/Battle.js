@@ -59,48 +59,43 @@ Game.Battle.prototype =  {
         var Mon = this.add.sprite(0,300,monster)
         Mon.scale.setTo(0.2)
 		Mon.x = w/2 - Mon.width/2
+		
+		
+		AnswerPod = this.add.sprite(0,0,'menu')
+        AnswerPod.x = w/2 - AnswerPod.width/2
+        AnswerPod.y = 500
+        AnswerPod.x = w/2 - AnswerPod.width/2
+
+        var counter = 2  // Math.floor((Math.random() * 2) + 1);  //between 0 and 1
+           
+        var attack = Attacks[counter]
+        var Btext = monster + ' used ' + attack + ' as attack';
+        BattleInfoText = this.add.text(0, 0, Btext, Bstyle);
+        BattleInfoText.x = w/2- (BattleInfoText.width/2)
+         
+        if(attack == 'Math') {
+			Mathx = Math.floor((Math.random() * 100) + 0)
+			Mathy = Math.floor((Math.random() * 100) + 0)
+			Mathz = Mathx + Mathy;
+		   
+			var answer = String(Mathx) + ' + y = ' + String(Mathz);
+			answers = [Mathy, Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0)] //shuffle answer array
+			answers = shuffle(answers)
+			BattleQuestion = this.add.text(0, 100, answer, Bstyle);
+			BattleQuestion.x = w/2 - BattleQuestion.width/2	
+              
+			answerText = this.add.text(0, 200, answers, Bstyle);
+			answerText.x = 405
+		}
+               
+               
         
     },
     
     update:function(){
 		
-		
-       if(NoQ) {
-           NoQ = false;
-		   //this.stage.backgroundColor = '#0000FF'
-           AnswerPod = this.add.sprite(0,0,'menu')
-           AnswerPod.x = w/2 - AnswerPod.width/2
-           AnswerPod.y = 500
-           AnswerPod.x = w/2 - AnswerPod.width/2
-
-           var counter = 2  // Math.floor((Math.random() * 2) + 1);  //between 0 and 1
-           
-           var attack = Attacks[counter]
-           var Btext = monster + ' used ' + attack + ' as attack';
-           BattleInfoText = this.add.text(0, 0, Btext, Bstyle);
-           BattleInfoText.x = w/2- (BattleInfoText.width/2)
-           
-           if(attack == 'Math') {
-				Mathx = Math.floor((Math.random() * 100) + 0)
-				Mathy = Math.floor((Math.random() * 100) + 0)
-				Mathz = Mathx + Mathy;
-			   
-				var answer = String(Mathx) + ' + y = ' + String(Mathz);
-				answers = [Mathy, Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0)] //shuffle answer array
-				answers = shuffle(answers)
-				BattleQuestion = this.add.text(0, 100, answer, Bstyle);
-				BattleQuestion.x = w/2 - BattleQuestion.width/2	
-               
-				answerText = this.add.text(0, 200, answers, Bstyle);
-				answerText.x = 405
-			 
-               
-               
-            }
-       }
-		
 	
-			if(this.input.activePointer.isDown == true && NoQ == false){ //If a Question is Asked get user inputs and checks what answer
+			if(this.input.activePointer.isDown == true){ //If a Question is Asked get user inputs and checks what answer
 				var x = this.input.activePointer.x
 				var y = this.input.activePointer.y
 				
@@ -118,7 +113,7 @@ Game.Battle.prototype =  {
 					if(answers[choise] == Mathy) {
 						//Correct
 						this.stage.backgroundColor = '#00FF00'
-						NoQ = true
+						
 						ELive -= 10
 						if(ELive <= 0) {
 							this.state.start('MainGame')
@@ -127,7 +122,6 @@ Game.Battle.prototype =  {
 						}
 					} else {
 						this.stage.backgroundColor = '#FF0000'
-						NoQ = true
 						PLive -= 1
 						if(PLive <= 0){
 							this.state.start('GameOver')
