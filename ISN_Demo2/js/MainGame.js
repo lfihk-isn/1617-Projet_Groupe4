@@ -17,7 +17,8 @@ Game.MainGame.prototype =  {
     
     preload: function() {
         //Checks if save file can be found
-
+		
+		
         
         if (localStorage['save']){
             //Load Save
@@ -30,11 +31,18 @@ Game.MainGame.prototype =  {
             Px = 100
             Py = 100
         }
-         
-        
     },
     
     create: function() {
+		
+		//Sound
+		music = this.add.audio('HeroQuest');
+
+		//TErrible Sound Quality needs fixing
+		
+		//music.play();
+		//music.volume = 50	
+	
 		//World
 		this.world.setBounds(0, 0, 1920, 1920);
 		

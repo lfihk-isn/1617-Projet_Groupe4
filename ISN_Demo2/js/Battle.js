@@ -49,6 +49,7 @@ Game.Battle.prototype =  {
     preload:function() {
         //Decide Enemy
         M = 0 //RANDOM Number Non Epic Monsters
+		ELive = 100
         monster = MonsterMUNE[M];
         
         
@@ -74,18 +75,32 @@ Game.Battle.prototype =  {
         BattleInfoText.x = w/2- (BattleInfoText.width/2)
          
         if(attack == 'Math') {
-			Mathx = Math.floor((Math.random() * 100) + 0)
-			Mathy = Math.floor((Math.random() * 100) + 0)
-			Mathz = Mathx + Mathy;
-		   
-			var answer = String(Mathx) + ' + y = ' + String(Mathz);
+			MathOP = ['+','-','*']
+			Operator = MathOP[Math.floor((Math.random() * 3))]
+			Mathx = Math.floor((Math.random() * 100) + 1)
+			Mathy = Math.floor((Math.random() * 100) + 1)
 			answers = [Mathy, Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0)] //shuffle answer array
 			answers = shuffle(answers)
+			if(Operator == '+'){
+				Mathz = Mathx + Mathy;
+			} else if(Operator == '-') {
+				//Should We Have Negatives?
+				Mathz = Mathx - Mathy;
+			} else if(Operator == '*') {
+				Mathx = Math.floor((Math.random() * 10) + 1)
+				Mathy = Math.floor((Math.random() * 10) + 1)
+				answers = [Mathy, Math.floor((Math.random() * 10) + 0), Math.floor((Math.random() * 10) + 0), Math.floor((Math.random() * 10) + 0), Math.floor((Math.random() * 1) + 0), Math.floor((Math.random() * 10) + 0)] //shuffle answer array
+			answers = shuffle(answers)
+				Mathz = Mathx * Mathy;
+			}
+			
+			var answer = String(Mathx) + ' ' + String(Operator) +' y = ' + String(Mathz);
+			
 			BattleQuestion = this.add.text(0, 100, answer, Bstyle);
 			BattleQuestion.x = w/2 - BattleQuestion.width/2	
               
 			answerText = this.add.text(0, 200, answers, Bstyle);
-			answerText.x = 405
+			answerText.x = w/2 - answerText.width/2
 		}
                
                

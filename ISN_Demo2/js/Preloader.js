@@ -25,6 +25,7 @@ Game.Preloader.prototype = {
         this.load.spritesheet('WarriorP','assets/Player/Sprites/WarriorP.png',671,512,8)
         this.load.spritesheet('WizardP','assets/Player/Sprites/WizardP.png',671,512,8)
         
+		//Sound
         //UI
         //MainMenu
         this.load.image('MainMenu','assets/UI/MainMenu_nobuttons.png')

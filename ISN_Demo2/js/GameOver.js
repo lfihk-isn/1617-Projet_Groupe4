@@ -17,6 +17,7 @@ Game.GameOver.prototype =  {
 		var OverText = this.add.text(0,0,'Click Anywhere To Restart', Bstyle)
 		OverText.x = w/2 - OverText.width/2
 		OverText.y = Over.y + 200
+		PLive = 3
 	},
 	update:function() {
 		if(this.input.activePointer.isDown){
