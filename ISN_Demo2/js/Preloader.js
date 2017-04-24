@@ -6,7 +6,8 @@ Game.Preloader = function(game) {
 Game.Preloader.prototype = {
     
     preload:function(){
-            
+           
+		
 		//TEMP Items will be removed when all assets have been created
         this.load.image('player','assets/player.png')
         this.load.image('brick','assets/brick.png')
@@ -26,6 +27,7 @@ Game.Preloader.prototype = {
         this.load.spritesheet('WizardP','assets/Player/Sprites/WizardP.png',671,512,8)
         
 		//Sound
+		this.load.audio('HeroQuest','assets/Sound/HeroQuest.ogg')
         //UI
         //MainMenu
         this.load.image('MainMenu','assets/UI/MainMenu_nobuttons.png')
@@ -33,7 +35,7 @@ Game.Preloader.prototype = {
         this.load.image('PLAY','assets/UI/BoutonJouer.png')
         this.load.image('Credit','assets/UI/BoutonCredits.png')
         this.load.image('GameOver','assets/UI/GameOver.jpg')
-		this.load.image('PauseMenu','assets/UI/PauseScreen.png')
+		this.load.image('PauseMenu','assets/UI/Pause_Screen.png')
         
         //Enemy
         this.load.image('Bomby','assets/Enemy/Sprite/Bomby.png')

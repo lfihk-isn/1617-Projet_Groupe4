@@ -90,31 +90,28 @@ Game.MainGame.prototype =  {
                 var x1 = 409, x2 = 678,
                     y1 = 312, y2 = 401;
 
-				
-				
-                if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2 & typeof menu != 'undefined'){
-                    //INSIDE
-					x = event.x - x1
-					y = event.y - y1
-					var choise =  Math.floor(x / 90)
-					if(choise == 0) {
-						// Resume button
-                        console.log('Resume')
-                        menu.destroy();
-                        this.game.paused = false;
-					}else if(choise == 1){
-						//Option //NOT YET Finished
-                        console.log('Option')
-					}else if(choise == 2){
-						//Save
-                        console.log('Save')
-                        this.save()
-					} else { //ERROR
-					}
+                if(event.x > 252 && event.x < 252+135 && event.y > 264  && event.y < 264+42) {
+					//Save
+					this.save();
+					
+				} else if(event.x > 480 && event.x < 480+135 && event.y > 327  && event.y < 327+42) {
+					menu.destroy();
+
+
+                    // Unpause the game
+                    this.game.paused = false;
+				} else if(event.x > 480 && event.x < 480+135 && event.y > 450  && event.y < 450+42){
+					this.save()
+					window.close()
+				} else if(event.x > 701 && event.x < 701+135 && event.y > 264  && event.y < 264+42) {
+					//Option
+					
+					//NEED TO ADD
+				}
 					
                     
 
-                }
+                
                 else if (typeof menu != 'undefined'){
                     //Unpause Game
                     menu.destroy();

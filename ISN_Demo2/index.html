@@ -13,7 +13,7 @@
       
       <script src='js/boot.js'></script>
       <script src='js/Preloader.js'></script>
-      <script src='js/MainMenu.js'></script>
+      <script src='js/MainMenu.js'></script> 
       <script src='js/MainGame.js'></script>
       <script src='js/CharacterSelect.js'></script>
       <script src='js/Battle.js'></script>
@@ -30,11 +30,11 @@
 			h = game.height
             //Declare States
             game.state.add('Boot',Game.Boot);
-            game.state.add('Preloader',Game.Preloader);
-            game.state.add('MainMenu',Game.MainMenu);
-            game.state.add('MainGame',Game.MainGame);
-            game.state.add('CharacterSelect',Game.CharacterSelect);
-            game.state.add('Battle',Game.Battle);
+            game.state.add('Preloader',Game.Preloader); //TODO
+            game.state.add('MainMenu',Game.MainMenu); //SOUND>
+            game.state.add('MainGame',Game.MainGame);	//Maze
+            game.state.add('CharacterSelect',Game.CharacterSelect); //Design
+            game.state.add('Battle',Game.Battle); //Desing + Monsters + Info
             game.state.add('GameOver',Game.GameOver);
             game.state.add('Test',Game.Test);
             //Add About 

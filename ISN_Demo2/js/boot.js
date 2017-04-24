@@ -14,6 +14,7 @@ Game.Boot.prototype = {
     
     preload:function() {
         console.log("RPG Game Booted");
+		
     },
     
     create:function() {
