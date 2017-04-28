@@ -12,6 +12,9 @@ var SpawnTimer = 10000
 var SaveTimer = 5000
 var TileX = 671
 var TileY = 512
+var stonex = []
+var stoney = []
+var LastStone = 0
 //Styling
 var GameStyle =  { font: "bold 19px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 
@@ -26,11 +29,15 @@ Game.MainGame.prototype =  {
             Type = localStorage['Ctype']    
 			BScore = localStorage['BScore']
 			Score = parseInt(localStorage['Score'])
+			PLive = parseInt(localStorage['PLive'])
+			stonex = JSON.parse(localStorage.getItem("StoneX"));
+			stoney = JSON.parse(localStorage.getItem("StoneY"));
         } else {
             Px = 1000
             Py = 750
 			BScore = 0
 			Score = 0
+			PLive = 3
 			
         }
     },
@@ -59,6 +66,9 @@ Game.MainGame.prototype =  {
 		}
 		walls = this.add.group();
 		walls.enableBody = true;
+		
+		stones = this.add.group();
+		
 		
         this.map()
 		
@@ -175,11 +185,10 @@ Game.MainGame.prototype =  {
 			this.save
 			//Reset 
 			ELive = 30;
-			//MSpawnText.text = "An Enemy Has Appeared"
-			//this.camera.shake(0.05, 500);
 			
-			//MSpawnText.text = ""
-            //this.state.start('Battle')
+			//ADD BATTLE Animation
+			
+			this.state.start('Battle')
         }
         
         
@@ -187,6 +196,7 @@ Game.MainGame.prototype =  {
         
         this.Pcr(Px,Py);
         this.MapCreation();
+		this.stoneADD();
 		
 		//Camera
 		this.camera.follow(player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
@@ -220,12 +230,15 @@ Game.MainGame.prototype =  {
 		GridY = Math.floor(player.y / TileY)
 		if (GridX == SpawnBossPoint1[0]+SpawnBossPoint1[1]  && GridY == SpawnBossPoint1[2] + SpawnBossPoint1[3]) {
 			//Wrap To Boos Overlord
+			BScore += 1
 		} 
 		if (GridX == SpawnBossPoint2[0]+SpawnBossPoint2[1]  && GridY == SpawnBossPoint2[2] + SpawnBossPoint2[3]) {
 			//Wrap To Boos PN Boss
+			BScore += 1
 		} 
 		if (GridX == SpawnBossPoint3[0]+SpawnBossPoint3[1]  && GridY == SpawnBossPoint3[2] + SpawnBossPoint3[3]) {
 			//Wrap To Boos TN Spawn
+			BScore += 1
 		} 
 		if (GridX == 39  && GridY == 23) {
 			//Check if all Boss Have been Beaten then Ends the game
@@ -234,7 +247,7 @@ Game.MainGame.prototype =  {
 				Error1.text = "You have no beaten the Bosses yet"
 				
 			} else {
-				this.state.start("Credit")
+				//this.state.start("Credit")
 			}
 			//Credit Scene
 		} else if(Error1.text  == "You have no beaten the Bosses yet"){
@@ -284,6 +297,22 @@ Game.MainGame.prototype =  {
             menu.x = (this.camera.x)  + w/2
             menu.y = (this.camera.y)  + h/2
         }
+		if(controls.space.isDown) {
+			if ((new Date).getTime() > (LastStone + 10000)) {
+				//stone.anchor.setTo(0.5)
+				stone = stones.create(player.x,player.y,'brick')
+				stone.x = stone.x - (stone.width/2)
+				stone.y = stone.y - (stone.height/2)
+				LastStone = (new Date).getTime()
+				this.world.bringToTop(stones);
+				this.world.bringToTop(player);
+				stonex.push(stone.x)
+				stoney.push(stone.y)
+				this.save()
+			} else {
+				
+			}
+		}
             
             
     },
@@ -346,6 +375,9 @@ Game.MainGame.prototype =  {
         localStorage.positiony = player.y
         localStorage.BScore = BScore
         localStorage.Score = Score
+        localStorage.PLive = PLive
+		localStorage.setItem("StoneX", JSON.stringify(stonex));
+		localStorage.setItem("StoneY", JSON.stringify(stoney));
         //localStorage.Ctype = '';
     },
     
@@ -375,6 +407,14 @@ Game.MainGame.prototype =  {
 		maze[23][39]
 		this.add.sprite(39*TileX,23*TileY,"wall2")
     },
+	
+	stoneADD : function() {
+		for(var i=0;i <stonex.length;i++) {
+			stones.create(stonex[i],stoney[i],'brick')
+			this.world.bringToTop(stones);
+			this.world.bringToTop(player);
+		}
+	},
 	
 	OverlordSpawn : function() {
 		

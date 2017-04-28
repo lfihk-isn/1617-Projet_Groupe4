@@ -41,8 +41,6 @@ var counter = 0
 var Attacks = ['','Country Question','Math']
 
 
-//Player stat
-var PLive = 3 //Needs improvement
 
 Game.Battle.prototype =  {
     
@@ -77,9 +75,28 @@ Game.Battle.prototype =  {
         if(attack == 'Math') {
 			MathOP = ['+','-','*']
 			Operator = MathOP[Math.floor((Math.random() * 3))]
+			 //REMOVE
 			Mathx = Math.floor((Math.random() * 100) + 1)
 			Mathy = Math.floor((Math.random() * 100) + 1)
-			answers = [Mathy, Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0)] //shuffle answer array
+			z = 0
+			answers = [Mathy]
+			var err = null
+			while(z <5){
+				ans = Math.floor((Math.random() * 100) + 1)
+				for(var j=0;j<answers.length;j++){
+					if(ans == answers[j]){
+						err = true
+					}
+				}
+				if(err != true){
+					z++
+					answers.push(ans)
+					err = null
+				} else {
+					err = null
+				}
+			}
+			//answers = [Mathy, Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0), Math.floor((Math.random() * 100) + 0)] //shuffle answer array
 			answers = shuffle(answers)
 			if(Operator == '+'){
 				Mathz = Mathx + Mathy;
@@ -90,12 +107,35 @@ Game.Battle.prototype =  {
 				Mathx = Math.floor((Math.random() * 10) + 1)
 				Mathy = Math.floor((Math.random() * 10) + 1)
 				answers = [Mathy, Math.floor((Math.random() * 10) + 0), Math.floor((Math.random() * 10) + 0), Math.floor((Math.random() * 10) + 0), Math.floor((Math.random() * 1) + 0), Math.floor((Math.random() * 10) + 0)] //shuffle answer array
-			answers = shuffle(answers)
+				z = 0
+				answers = [Mathy]
+				var err = null
+				while(z <5){
+					ans = Math.floor((Math.random() * 10) + 1)
+					for(var j=0;j<answers.length;j++){
+						if(ans == answers[j]){
+							err = true
+						}
+					}
+					if(err != true){
+						z++
+						answers.push(ans)
+						err = null
+					} else {
+						err = null
+					}
+				}
+				answers = shuffle(answers)
 				Mathz = Mathx * Mathy;
+			} else if(Operator == "/"){
+				
+				Mathx = Math.floor((Math.random() * 10) + 1)
+				Mathy = Math.floor((Math.random() * 10) + 1)
+				Mathx = Mathx * Mathy
+				c=Mathz, Mathz=Mathy, Mathy=c;
 			}
 			
 			var answer = String(Mathx) + ' ' + String(Operator) +' y = ' + String(Mathz);
-			
 			BattleQuestion = this.add.text(0, 100, answer, Bstyle);
 			BattleQuestion.x = w/2 - BattleQuestion.width/2	
               
@@ -130,10 +170,13 @@ Game.Battle.prototype =  {
 						this.stage.backgroundColor = '#00FF00'
 						
 						ELive -= 10
-						console.log(ELive)
 						if(ELive <= 0) {
 							Score += 1
+							if(PLive < 3) {
+								PLive += 1
+							}
 							localStorage.Score = Score
+							
 							this.stage.background = "#0000FF"
 							this.state.start('MainGame') //WOn
 							
