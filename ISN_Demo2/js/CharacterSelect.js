@@ -11,8 +11,8 @@ var ChampName;
 var ArrowRight;
 var ArrowLeft;
 var Play;
-var style = { font: "bold 64px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-var el = document.getElementsByTagName('canvas')
+
+
 
 Left = function() {
     ChampSlectX--;
@@ -46,7 +46,7 @@ Right = function() {
 
 start = function() {
     var Cr = ChampSlect[ChampSlectX] + 'P'
-	this.state.start('MainGame')
+	this.state.start('maze')
 }
 
 
@@ -65,16 +65,15 @@ Game.CharacterSelect.prototype = {
     create: function(){
         
     
-        //var mc = new Hammer(el);
         
-        ArrowRight = this.add.text(100, 50, "→", style);  
+        ArrowRight = this.add.text(100, 50, "→", Tstyle);  
         ArrowRight.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
         ArrowRight.anchor.setTo(1,0)
         
-        ArrowLeft = this.add.text(100, 50, "←", style); 
+        ArrowLeft = this.add.text(100, 50, "←", Tstyle); 
         ArrowLeft.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
 		
-		Play = this.add.text(100,50,'Start',style);
+		Play = this.add.text(100,50,'Start',Tstyle);
 		
         
         Cselect = this.add.sprite(100,100,'Knight')
@@ -83,7 +82,7 @@ Game.CharacterSelect.prototype = {
         
         Cselect.y = 40
         
-        ChampName = this.add.text(0,0,ChampSlect[ChampSlectX],style);
+        ChampName = this.add.text(0,0,ChampSlect[ChampSlectX],Tstyle);
         ChampName.anchor.setTo(0.5,0.5)
         ChampName.x = (this.game.width / 2)
         ChampName.y = Cselect.y + Cselect.height + ChampName.height/2

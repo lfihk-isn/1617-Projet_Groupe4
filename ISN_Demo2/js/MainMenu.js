@@ -7,8 +7,9 @@ startC = function() {
     
     //Regarde si il faut charger une nouvelle partie ou charge l'ancienne
     if(Ptext == 'PLAY'){
-        this.state.start('MainGame')
+        this.state.start('maze')
     } else {
+		localStorage.clear()
         this.state.start('CharacterSelect')
     }
 }; 

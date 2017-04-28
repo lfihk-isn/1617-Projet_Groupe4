@@ -12,6 +12,8 @@ Game.Preloader.prototype = {
         this.load.image('player','assets/player.png')
         this.load.image('brick','assets/brick.png')
         this.load.image('keeper','assets/Keep.png')
+        this.load.image('wall','assets/wall3.png')
+        this.load.image('wall2','assets/wall4.png')
         this.load.image('menu', 'assets/number-buttons-90x90.png', 270, 180);
        
         //Character Select
@@ -20,7 +22,7 @@ Game.Preloader.prototype = {
         this.load.image('Wizard','assets/Player/Presentation/Wizard.png')
         this.load.image('Fighter','assets/Player/Presentation/Fighter.png')
 
-        //Game Character
+        //GameCharacter
         this.load.spritesheet('KnightP','assets/Player/Sprites/KnightP.png',671,512,8)
         this.load.spritesheet('FighterP','assets/Player/Sprites/FighterP.png',671,512,8)
         this.load.spritesheet('WarriorP','assets/Player/Sprites/WarriorP.png',671,512,8)
@@ -28,7 +30,9 @@ Game.Preloader.prototype = {
         
 		//Sound
 		this.load.audio('HeroQuest','assets/Sound/HeroQuest.ogg')
-        //UI
+        
+		
+		//UI
         //MainMenu
         this.load.image('MainMenu','assets/UI/MainMenu_nobuttons.png')
         this.load.image('NEWG','assets/UI/BoutonNouveau.png')
@@ -36,19 +40,24 @@ Game.Preloader.prototype = {
         this.load.image('Credit','assets/UI/BoutonCredits.png')
         this.load.image('GameOver','assets/UI/GameOver.jpg')
 		this.load.image('PauseMenu','assets/UI/Pause_Screen.png')
-        
-        //Enemy
-        this.load.image('Bomby','assets/Enemy/Sprite/Bomby.png')
         //GameUI
         this.load.image('pauseBTN','assets/button.png')
-        console.log('Assets Loaded')
-        
         //Map
         this.load.image('ground','assets/Map/Ground.png')
+		
+		
+        //Enemy
+        this.load.image('Bomby','assets/Enemy/Sprite/Bomby.png')
         
+        
+        
+        
+		console.log('Assets Loaded')
 		
 		//Style
 		Bstyle = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+		Tstyle = { font: "bold 64px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+		UIstyle = { font: '24px Arial', fill: '#fff' }
 		
         //Vars
 		//transfer all vars declaraation here

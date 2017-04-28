@@ -49,7 +49,7 @@ Game.Battle.prototype =  {
     preload:function() {
         //Decide Enemy
         M = 0 //RANDOM Number Non Epic Monsters
-		ELive = 100
+		
         monster = MonsterMUNE[M];
         
         
@@ -130,8 +130,13 @@ Game.Battle.prototype =  {
 						this.stage.backgroundColor = '#00FF00'
 						
 						ELive -= 10
+						console.log(ELive)
 						if(ELive <= 0) {
-							this.state.start('MainGame')
+							Score += 1
+							localStorage.Score = Score
+							this.stage.background = "#0000FF"
+							this.state.start('MainGame') //WOn
+							
 						}else {
 							this.state.start(this.state.current)
 						}
