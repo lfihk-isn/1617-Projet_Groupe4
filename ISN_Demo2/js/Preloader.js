@@ -36,8 +36,11 @@ Game.Preloader.prototype = {
         //MainMenu
         this.load.image('MainMenu','assets/UI/MainMenu_nobuttons.png')
         this.load.image('NEWG','assets/UI/BoutonNouveau.png')
+        this.load.image('NEWG_Clicked','assets/UI/Bouton_Nouveau_Color.png')
         this.load.image('PLAY','assets/UI/BoutonJouer.png')
+        this.load.image('PLAY_Clicked','assets/UI/Bouton_Jouer_Color.png')
         this.load.image('Credit','assets/UI/BoutonCredits.png')
+        this.load.image('Credit_Clicked','assets/UI/Bouton_Credits_Color.png')
         this.load.image('GameOver','assets/UI/GameOver.jpg')
 		this.load.image('PauseMenu','assets/UI/Pause_Screen.png')
         //GameUI

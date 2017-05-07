@@ -80,6 +80,34 @@ Game.MainMenu.prototype = {
         Version.setShadow(3,3,'rgba(0,0,0,0.5)',2);
         
      },
+	 
+	 update: function() {
+		if(this.input.activePointer.x > 448 && this.input.activePointer.x < Play.width + 448) {
+			if(this.input.activePointer.y > Play.y && this.input.activePointer.y < Play.y + Play.height) {
+				Play.loadTexture('PLAY_Clicked', 0)
+			} else {
+				Play.loadTexture('PLAY', 0)
+			}
+			if(this.input.activePointer.y > About.y && this.input.activePointer.y < About.y + About.height) {
+				About.loadTexture('Credit_Clicked', 0)
+			} else {
+				About.loadTexture('Credit', 0)
+			}
+			if( localStorage['save']) {
+				if(this.input.activePointer.y > Ngame.y && this.input.activePointer.y < Ngame.y + Ngame.height) {
+					Ngame.loadTexture('NEWG_Clicked', 0)
+				} else {
+					Ngame.loadTexture('NEWG', 0)
+				}
+			}
+		}else {
+			Play.loadTexture('PLAY', 0)
+			About.loadTexture('Credit', 0)
+			if (localStorage['save']) {
+				Ngame.loadTexture('NEWG', 0)
+			}
+		}
+	 }
     
 }
 
