@@ -25,7 +25,7 @@ var BattleInfoText
 var answerText
 var BattleQuestion
 
-
+var AnswerConfirmation = ''
 
 
 //Arrays of all Non Epic enemies
@@ -40,7 +40,8 @@ var NoQ = true;
 var counter = 0
 var Attacks = ['','Country Question','Math']
 
-
+var Box_X = [290,290,472,472,648,648]
+var Box_Y = [246,336,246,336,246,336]
 
 Game.Battle.prototype =  {
     
@@ -54,12 +55,13 @@ Game.Battle.prototype =  {
     },
     
     create:function(){
-	
+		BS = this.add.sprite(0,0,'BasicBattleBG');
         var Mon = this.add.sprite(0,300,monster)
         Mon.scale.setTo(0.2)
-		Mon.x = w/2 - Mon.width/2
+		Mon.x = w*(5/6) - Mon.width/2
 		
-		
+		AnswerConfirmationT = this.add.text(0,170,AnswerConfirmation, Bstyle)
+		AnswerConfirmationT.x = 1080/2 - AnswerConfirmationT.width/2
 		AnswerPod = this.add.sprite(0,0,'menu')
         AnswerPod.x = w/2 - AnswerPod.width/2
         AnswerPod.y = 500
@@ -138,9 +140,15 @@ Game.Battle.prototype =  {
 			var answer = String(Mathx) + ' ' + String(Operator) +' y = ' + String(Mathz);
 			BattleQuestion = this.add.text(0, 100, answer, Bstyle);
 			BattleQuestion.x = w/2 - BattleQuestion.width/2	
-              
-			answerText = this.add.text(0, 200, answers, Bstyle);
-			answerText.x = w/2 - answerText.width/2
+			
+
+			for(var i = 0; i < 6; i++){
+				answerText = this.add.text(0,0,answers[i], Bstyle)
+				answerText.x = (Box_X[i])+135/2 - answerText.width/2
+				answerText.y = (Box_Y[i])+(64/2) - answerText.height/2
+			}
+				
+				
 		}
                
                
@@ -153,22 +161,44 @@ Game.Battle.prototype =  {
 			if(this.input.activePointer.isDown == true){ //If a Question is Asked get user inputs and checks what answer
 				var x = this.input.activePointer.x
 				var y = this.input.activePointer.y
+				console.log(x)
+				console.log(y)
 				
-				//Get Coords of Answer Pod 
-				//Change to dymancly get the values
-				var x1 = 405, x2 = 405 + 270
-					y1 = 500, y2 = 500 + 180;
-
-
-                if(x > x1 && x < x2 && y > y1 && y < y2){
-					x = x - x1
-					y = y - y1
-					var choise =  Math.floor(x / 90) + 3*Math.floor(y / 90);
+				
+				if( x > Box_X[0] && x < (Box_X[0] + 135) && y > Box_Y[0] && y < (Box_Y[0]+64)){
+					choise = 0
+					console.log('11')
 					
+				} else if( x > Box_X[1] && x < (Box_X[1] + 135) && y > Box_Y[1] && y < (Box_Y[1]+64)){
+					choise = 1
+					console.log('11')
+					
+				} else if( x > Box_X[2] && x < (Box_X[2] + 135) && y > Box_Y[2] && y < (Box_Y[2]+64)){
+					choise = 2
+					console.log('11')
+					
+				} else if( x > Box_X[3] && x < (Box_X[3] + 135) && y > Box_Y[3] && y < (Box_Y[3]+64)){
+					choise = 3
+					console.log('11')
+					
+				} else if( x > Box_X[4] && x < (Box_X[4] + 135) && y > Box_Y[4] && y < (Box_Y[4]+64)){
+					choise = 4
+					console.log('11')
+					
+				} else if( x > Box_X[5] && x < (Box_X[5] + 135) && y > Box_Y[5] && y < (Box_Y[5]+64)){
+					choise = 5
+					console.log('11')
+					
+				} else {
+					choise = null
+				}
+				
+				
+				if (choise != null) {
 					if(answers[choise] == Mathy) {
 						//Correct
 						this.stage.backgroundColor = '#00FF00'
-						
+						AnswerConfirmation = 'Right'
 						ELive -= 10
 						if(ELive <= 0) {
 							Score += 1
@@ -185,6 +215,8 @@ Game.Battle.prototype =  {
 						}
 					} else {
 						this.stage.backgroundColor = '#FF0000'
+						AnswerConfirmation = 'Wrong'
+						//this.camera.shake(0.05, 500);
 						PLive -= 1
 						if(PLive <= 0){
 							this.state.start('GameOver')
@@ -199,7 +231,7 @@ Game.Battle.prototype =  {
 				}
                     
 			}
-       }    
+		}
     }
 
 

@@ -10,9 +10,9 @@ Game.Preloader.prototype = {
 		
 		//TEMP Items will be removed when all assets have been created
         this.load.image('player','assets/player.png')
-        this.load.image('brick','assets/brick.png')
+        this.load.image('brick','assets/UI/Pebble.png')
         this.load.image('keeper','assets/Keep.png')
-        this.load.image('wall','assets/wall3.png')
+        this.load.image('wall','assets/Map/Wall.png')
         this.load.image('wall2','assets/wall4.png')
         this.load.image('menu', 'assets/number-buttons-90x90.png', 270, 180);
        
@@ -41,13 +41,14 @@ Game.Preloader.prototype = {
         this.load.image('PLAY_Clicked','assets/UI/Bouton_Jouer_Color.png')
         this.load.image('Credit','assets/UI/BoutonCredits.png')
         this.load.image('Credit_Clicked','assets/UI/Bouton_Credits_Color.png')
-        this.load.image('GameOver','assets/UI/GameOver.jpg')
+        this.load.image('GameOver','assets/UI/GameOver.png')
 		this.load.image('PauseMenu','assets/UI/Pause_Screen.png')
         //GameUI
         this.load.image('pauseBTN','assets/button.png')
         //Map
         this.load.image('ground','assets/Map/Ground.png')
-		
+		//Battle
+		this.load.image('BasicBattleBG', 'assets/UI/Battle_Scene.png')
 		
         //Enemy
         this.load.image('Bomby','assets/Enemy/Sprite/Bomby.png')
