@@ -62,10 +62,7 @@ Game.Battle.prototype =  {
 		
 		AnswerConfirmationT = this.add.text(0,170,AnswerConfirmation, Bstyle)
 		AnswerConfirmationT.x = 1080/2 - AnswerConfirmationT.width/2
-		AnswerPod = this.add.sprite(0,0,'menu')
-        AnswerPod.x = w/2 - AnswerPod.width/2
-        AnswerPod.y = 500
-        AnswerPod.x = w/2 - AnswerPod.width/2
+		
 
         var counter = 2  // Math.floor((Math.random() * 2) + 1);  //between 0 and 1
            

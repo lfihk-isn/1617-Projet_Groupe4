@@ -20,13 +20,28 @@
       <script src='js/GameOver.js'></script>
       <script src='js/test.js'></script>
       <script src='js/maze.js'></script>
+      <script src='js/victoire.js'></script>
+      <script src='js/BossBattle.js'></script>
 
   </head>
   <body>
+	<table>
+	<tr>
+		<td id='game-area'></td>
+		<td id='help'><h2> Game Help </h2>
+	<p> WASD is used to control the character </p>
+	<p>Beat Waves of minions with your incredible skills, find the hidden Bosses and escape the terrible maze to become the Hero! </p>
+	<p>Game is set to autosave every 5 seconds and when you enter a battle. So don't worry! :D</p>
+	</td>
+	<tr>
+	<tr> <td>Code: ImOverlord, Art is created and owned by this game</td> </tr>
+	
+	</table>
     <script>
+	
         window.onload = function() {
             
-            var game = new Phaser.Game(1080, 720, Phaser.AUTO, '');
+            var game = new Phaser.Game(1080, 720, Phaser.AUTO, 'game-area');
             w = game.width
 			h = game.height
             //Declare States
@@ -39,13 +54,16 @@
             game.state.add('GameOver',Game.GameOver);
             game.state.add('maze',Game.maze);
             game.state.add('Test',Game.Test);
+            game.state.add('Victoire',Game.Victoire);
+            game.state.add('BossBattle',Game.BossBattle);
             //Add About 
-            
+				
             //Start
             game.state.start('Boot');
+			
         }
-          
+        
     </script>
-
+	
   </body>
 </html>

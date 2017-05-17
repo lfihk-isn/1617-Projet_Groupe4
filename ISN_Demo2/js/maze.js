@@ -12,6 +12,16 @@ Game.maze.prototype = {
 		
 	},
 	create: function() {
+		bot = this.add.sprite(0, 0, 'LoadingS');
+
+		//  Here we add a new animation called 'run'
+    //  We haven't specified any frames because it's using every frame in the texture atlas
+    bot.animations.add('run');
+
+    //  And this starts the animation playing by using its key ("run")
+    //  15 is the frame rate (15fps)
+    //  true means it will loop when it finishes
+    bot.animations.play('run', 15, true);
 		var moves = []
 		var mazeGraphics;
 		mazeGraphics = this.add.graphics(0, 0);
@@ -43,9 +53,9 @@ Game.maze.prototype = {
 		x = 0
 		time1 = (new Date).getTime();
 		var style = { font: "65px Arial", fill: "#ff0044", align: "center" };
-		Loading = this.add.text(0,0,'Loading Map...',style)
-		Loading.x = 1080/2 - Loading.width/2
-		Loading .y = 720/2
+		//Loading = this.add.text(0,0,'Loading Map...',style)
+		//Loading.x = 1080/2 - Loading.width/2
+		//Loading .y = 720/2
 		tempArray = []
 			
 		this.time.events.loop(Phaser.Timer.SECOND/999999, function(){
@@ -96,8 +106,8 @@ Game.maze.prototype = {
 						}
 						
 						x += 0.2
-						mazeGraphics.lineStyle(2, 0x00FF00, 1);
-						mazeGraphics.drawRect(1080/2 - 250, 720/2-100, x*5, 50)
+						//mazeGraphics.lineStyle(2, 0x00FF00, 1);
+						//mazeGraphics.drawRect(1080/2 - 250, 720/2-100, x*5, 50)
 						//document.title = x
 						
 					}      
@@ -106,6 +116,7 @@ Game.maze.prototype = {
 		
 	},
 	update : function() {
+		
 		if (x > 95.8) {
 			localStorage.maze = maze
 			this.state.start('MainGame')
