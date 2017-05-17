@@ -8,7 +8,7 @@ var player;
 var controls = {};
 var Load;
 var i = 0;
-var SpawnTimer = 10000
+var SpawnTimer = 30000
 var SaveTimer = 5000
 var TileX = 671
 var TileY = 512
@@ -184,7 +184,7 @@ Game.MainGame.prototype =  {
             //Add battel chance
 			this.save
 			//Reset 
-			ELive = 30;
+			ELive = 10;
 			
 			//ADD BATTLE Animation
 			

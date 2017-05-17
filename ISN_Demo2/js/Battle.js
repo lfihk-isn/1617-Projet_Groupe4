@@ -35,7 +35,7 @@ var M;
 
 
 //Monster Stat
-var ELive = 100; //Decide Life system
+var ELive = 10; //Decide Life system
 var NoQ = true;
 var counter = 0
 var Attacks = ['','Country Question','Math']
@@ -206,7 +206,7 @@ Game.Battle.prototype =  {
 								PLive += 1
 							}
 							localStorage.Score = Score
-							
+							AnswerConfirmation = ''
 							this.stage.background = "#0000FF"
 							this.state.start('MainGame') //WOn
 							
