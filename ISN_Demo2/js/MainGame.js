@@ -30,7 +30,7 @@ Game.MainGame.prototype =  {
 			BScore = localStorage['BScore']
 			Score = parseInt(localStorage['Score'])
 			PLive = parseInt(localStorage['PLive'])
-			stonex = JSON.parse(localStorage.getItem("StoneX"));
+			stonex = JSON.parse(localStorage.StoneX);
 			stoney = JSON.parse(localStorage.getItem("StoneY"));
 			OVD = parseInt(localStorage['OVD'])
 			TNJD = parseInt(localStorage['TNJD'])
@@ -44,7 +44,8 @@ Game.MainGame.prototype =  {
 			OVD = 0
 			TNJD = 0
 			PNJD = 0
-			
+			stonex = []
+			stoney = []
         }
     },
     
