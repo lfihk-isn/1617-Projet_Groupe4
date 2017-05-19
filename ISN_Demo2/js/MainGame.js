@@ -31,7 +31,7 @@ Game.MainGame.prototype =  {
 			Score = parseInt(localStorage['Score'])
 			PLive = parseInt(localStorage['PLive'])
 			stonex = JSON.parse(localStorage.StoneX);
-			stoney = JSON.parse(localStorage.getItem("StoneY"));
+			stoney = JSON.parse(localStorage.StoneY);
 			OVD = parseInt(localStorage['OVD'])
 			TNJD = parseInt(localStorage['TNJD'])
 			PNJD = parseInt(localStorage['PNJD'])
@@ -159,7 +159,10 @@ Game.MainGame.prototype =  {
                     this.game.paused = false;
 				} else if(event.x > 480 && event.x < 480+135 && event.y > 450  && event.y < 450+42){
 					this.save()
-					window.close()
+					
+					this.state.start('MainMenu')
+					menu.destroy()
+					this.game.paused = false
 				} else if(event.x > 701 && event.x < 701+135 && event.y > 264  && event.y < 264+42) {
 					//Option
 					
