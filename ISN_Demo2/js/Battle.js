@@ -29,7 +29,7 @@ var AnswerConfirmation = ''
 
 
 //Arrays of all Non Epic enemies
-var MonsterMUNE = ['Bomby'] // Add
+// Add
 var monster
 var M;
 
@@ -47,8 +47,8 @@ Game.Battle.prototype =  {
     
     preload:function() {
         //Decide Enemy
-        M = 0 //RANDOM Number Non Epic Monsters
-		
+        M = this.rnd.integerInRange(0, 2) //RANDOM Number Non Epic Monsters
+		var MonsterMUNE = ['Bomby','BookVamp','SpectreFloral'] 
         monster = MonsterMUNE[M];
         
         
@@ -57,7 +57,7 @@ Game.Battle.prototype =  {
     create:function(){
 		BS = this.add.sprite(0,0,'BasicBattleBG');
         var Mon = this.add.sprite(0,300,monster)
-        Mon.scale.setTo(0.2)
+        Mon.scale.setTo(1)
 		Mon.x = w*(5/6) - Mon.width/2
 		
 		AnswerConfirmationT = this.add.text(0,170,AnswerConfirmation, Bstyle)

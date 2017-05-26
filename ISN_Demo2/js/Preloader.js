@@ -12,7 +12,7 @@ Game.Preloader.prototype = {
         this.load.image('player','assets/player.png')
         this.load.image('brick','assets/UI/Pebble.png')
         this.load.image('keeper','assets/Keep.png')
-        this.load.image('wall','assets/Map/Wall.png')
+        
         this.load.image('wall2','assets/wall4.png')
         this.load.image('menu', 'assets/number-buttons-90x90.png', 270, 180);
        
@@ -49,13 +49,16 @@ Game.Preloader.prototype = {
         //GameUI
         this.load.image('pauseBTN','assets/button.png')
         //Map
-        this.load.image('ground','assets/Map/Ground.png')
+        this.load.image('ground','assets/Map/Ground_Tile.png')
 		this.load.image('WarpZone','assets/Map/warp_Ground.png')
+		this.load.image('wall','assets/Map/Wall_Tile.png')
 		//Battle
 		this.load.image('BasicBattleBG', 'assets/UI/Battle_Scene.png')
 		
         //Enemy
         this.load.image('Bomby','assets/Enemy/Sprite/Bomby.png')
+        this.load.image('BookVamp','assets/Enemy/Sprite/BookVamp.png')
+        this.load.image('SpectreFloral','assets/Enemy/Sprite/spectrefloral.png')
         //BOSS
 		this.load.image('Overlord','assets/Enemy/Sprite/ImOverlord_Boss.png')
 		this.load.image('OverlordBattleBG','assets/UI/ImOverlord_Boss_Battle.png')

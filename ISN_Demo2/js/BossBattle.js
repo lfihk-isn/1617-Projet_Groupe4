@@ -46,8 +46,6 @@ var Attacks = ['###','Country Question','Math']
 Game.BossBattle.prototype =  {
     
     preload:function() {
-        //Decide Enemy
-        M = 0 //RANDOM Number Non Epic Monsters
 		
         monster = BossMUNE[BO$$];
 		if(BO$$ == 0) {
@@ -75,9 +73,9 @@ Game.BossBattle.prototype =  {
     
     create:function(){
 		BS = this.add.sprite(0,0,monster+'BattleBG');
-        var Mon = this.add.sprite(0,180,monster)
-        Mon.scale.setTo(0.6)
-		Mon.x = w/2 - Mon.width/2
+        //var Mon = this.add.sprite(0,180,monster)
+        //Mon.scale.setTo(0.6)
+		//Mon.x = w/2 - Mon.width/2
 		
 		AnswerConfirmationT = this.add.text(0,170,AnswerConfirmation, Bstyle)
 		AnswerConfirmationT.x = 1080/2 - AnswerConfirmationT.width/2
@@ -229,6 +227,16 @@ Game.BossBattle.prototype =  {
 							if(BO$$ == 0) {
 								OVD = 1
 								localStorage['OVD'] = OVD
+							}
+							if(BO$$ == 1) {
+								
+								TNJD = 1
+								localStorage['TNJD'] = TNJD
+							}
+							if(BO$$ == 2) {
+								alert('PNJD')
+								PNJD = 1
+								localStorage['PNJD'] = PNJD
 							}
 							this.state.start('MainGame') //WOn
 							

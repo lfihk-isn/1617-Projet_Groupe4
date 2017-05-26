@@ -10,6 +10,7 @@ Game.GameOver.prototype =  {
 	},
 	create:function() {
 		localStorage.clear() //InFront to Prevent Player from exiting the game before his death is registered
+		
 		var Over = this.add.sprite(0,0,'GameOver')
 		
 		PLive = 3

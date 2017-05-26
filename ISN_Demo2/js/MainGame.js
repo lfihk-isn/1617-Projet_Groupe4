@@ -2,13 +2,20 @@ Game.MainGame = function(game) {
     
 };
 
-
+function Cheat(x,y) {
+	
+	//For Debugging Purposes {removed in productions}
+	player.x = x*671
+	player.y = y*512
+}
 //Game Vars
+var zoom = 1
 var player;
 var controls = {};
 var Load;
 var i = 0;
 var SpawnTimer = 30000
+var SpawnTimer = 30000 //debug
 var SaveTimer = 5000
 var TileX = 671
 var TileY = 512
@@ -78,21 +85,34 @@ Game.MainGame.prototype =  {
 		
 		
         this.map()
+		this.MapCreation();
 		if(BO$$ ==  null){
 		//Generate the 3 wraps to the boss
 		if(localStorage.OSpawn != null) {
+			console.log('TTTTTTTT')
 			SpawnBossPoint1 = localStorage.OSpawn
 			var i = SpawnBossPoint1[0] + SpawnBossPoint1[1]
 			var j = SpawnBossPoint1[2] + SpawnBossPoint1[3]
-			this.add.sprite(i*671,j*512,'WarpZone')
+			if(OVD == 0) {
+				console.log('OVD')
+				this.add.sprite(i*671,j*512,'WarpZone')
+			}
+			
 			SpawnBossPoint2 = localStorage.PNSpawn
 			var i = SpawnBossPoint2[0] + SpawnBossPoint2[1]
 			var j = SpawnBossPoint2[2] + SpawnBossPoint2[3]
-			this.add.sprite(i*671,j*512,'WarpZone')
+			if(PNJD == 0) {
+				console.log('PNJ')
+				this.add.sprite(i*671,j*512,'WarpZone')
+			}
+			
 			SpawnBossPoint3 = localStorage.TNSpawn
 			var i = SpawnBossPoint3[0] + SpawnBossPoint3[1]
 			var j = SpawnBossPoint3[2] + SpawnBossPoint3[3]
-			this.add.sprite(i*671,j*512,'WarpZone')
+			if(TNJD == 0) {
+				console.log('TNJ')
+				this.add.sprite(i*671,j*512,'WarpZone')
+			}
 		} else {
 			
 			this.OverlordSpawn()
@@ -112,6 +132,15 @@ Game.MainGame.prototype =  {
 			this.add.sprite(i*671,j*512,'WarpZone')
 		}
 		}
+		
+		console.log(parseInt(SpawnBossPoint1[0]+SpawnBossPoint1[1]))
+		console.log(parseInt(SpawnBossPoint1[2]+SpawnBossPoint1[3]))
+		
+		console.log(parseInt(SpawnBossPoint2[0]+SpawnBossPoint2[1]))
+		console.log(parseInt(SpawnBossPoint2[2]+SpawnBossPoint2[3]))
+		
+		console.log(parseInt(SpawnBossPoint3[0]+SpawnBossPoint3[1]))
+		console.log(parseInt(SpawnBossPoint3[2]+SpawnBossPoint3[3]))
 		
 		
 		
@@ -207,7 +236,7 @@ Game.MainGame.prototype =  {
 		//Call Creator
         
         this.Pcr(Px,Py);
-        this.MapCreation();
+        
 		this.stoneADD();
 		
 		//Camera
@@ -230,6 +259,7 @@ Game.MainGame.prototype =  {
 		MSpawnText.y = h/2 - MSpawnText.height/2
 		MSpawnText.text = ""
 		MSpawnText.fixedToCamera = true
+		this.stage.backgroundColor = '#000000'
     },
     
     update: function() {
@@ -240,7 +270,7 @@ Game.MainGame.prototype =  {
         //Check if Player Enter Boss Area
 		GridX = Math.floor(player.x / TileX)
 		GridY = Math.floor(player.y / TileY)
-		if (GridX == SpawnBossPoint1[0]+SpawnBossPoint1[1]  && GridY == SpawnBossPoint1[2] + SpawnBossPoint1[3] && OVD == 0) {
+		if (GridX == parseInt(SpawnBossPoint1[0]+SpawnBossPoint1[1])  && GridY == parseInt(SpawnBossPoint1[2]+SpawnBossPoint1[3]) && OVD == 0) {
 			//Wrap To Boss Overlord
 			
 			BO$$ = 0
@@ -250,14 +280,14 @@ Game.MainGame.prototype =  {
 			
 			//this.world.bringToTop(player);
 		} 
-		if (GridX == SpawnBossPoint2[0]+SpawnBossPoint2[1]  && GridY == SpawnBossPoint2[2] + SpawnBossPoint2[3] && TNJD == 0) {
-			BO$$ = 1
+		if (GridX == parseInt(SpawnBossPoint2[0]+SpawnBossPoint2[1])  && GridY == parseInt(SpawnBossPoint2[2]+SpawnBossPoint2[3]) && PNJD == 0) {
+			BO$$ = 2
 			ELive = 30
 			this.state.start('BossBattle')
 			this.add.sprite((SpawnBossPoint2[0]+SpawnBossPoint2[1])*671,(SpawnBossPoint2[2] + SpawnBossPoint2[3])*512,'ground')
 		} 
-		if (GridX == SpawnBossPoint3[0]+SpawnBossPoint3[1]  && GridY == SpawnBossPoint3[2] + SpawnBossPoint3[3] && PNJD == 0) {
-			BO$$ = 2
+		if (GridX == parseInt(SpawnBossPoint3[0]+SpawnBossPoint3[1])  && GridY == parseInt(SpawnBossPoint3[2]+SpawnBossPoint3[3]) && TNJD == 0) {
+			BO$$ = 1
 			ELive = 30
 			this.add.sprite((SpawnBossPoint3[0]+SpawnBossPoint3[1])*671,(SpawnBossPoint3[2] + SpawnBossPoint3[3])*512,'ground')
 			this.state.start('BossBattle')
@@ -266,7 +296,8 @@ Game.MainGame.prototype =  {
 			//Start Cinematic
 			this.camera.x = 39 * 671
 			this.camera.x = 512 * 23
-			BScore += 1
+			BScore = parseInt(BScore) + 1
+			localStorage['BScore'] = parseInt(localStorage['BScore']) + 1
 		}
 		if (GridX == 39  && GridY == 23) {
 			//Check if all Boss Have been Beaten then Ends the game
@@ -405,13 +436,15 @@ Game.MainGame.prototype =  {
         localStorage.Score = Score
         localStorage.PLive = PLive
 		localStorage['OVD'] = OVD
+		localStorage['TNJD'] = TNJD
+		localStorage['PNJD'] = PNJD
 		localStorage.setItem("StoneX", JSON.stringify(stonex));
 		localStorage.setItem("StoneY", JSON.stringify(stoney));
         //localStorage.Ctype = '';
     },
     
     map : function() {
-        this.world.scale.setTo(1)
+        this.world.scale.setTo(zoom)
         mapArray = maze
         
         var posX = 0
@@ -526,8 +559,7 @@ Game.MainGame.prototype =  {
     },
 	
 	CheatTeleport: function(x,y) {
-		player.x = x*671
-		player.y = y*512
+		
 	}
 	
 }
