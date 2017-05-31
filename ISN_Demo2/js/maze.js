@@ -12,16 +12,9 @@ Game.maze.prototype = {
 		
 	},
 	create: function() {
-		bot = this.add.sprite(0, 0, 'LoadingS');
-
-		//  Here we add a new animation called 'run'
-    //  We haven't specified any frames because it's using every frame in the texture atlas
-    bot.animations.add('run');
-
-    //  And this starts the animation playing by using its key ("run")
-    //  15 is the frame rate (15fps)
-    //  true means it will loop when it finishes
-    bot.animations.play('run', 15, true);
+		loading = this.add.sprite(0, 0, 'LoadingS');
+		loading.animations.add('load');
+		loading.animations.play('load', 15, true);
 		var moves = []
 		var mazeGraphics;
 		mazeGraphics = this.add.graphics(0, 0);

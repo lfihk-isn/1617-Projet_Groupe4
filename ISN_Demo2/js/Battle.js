@@ -55,10 +55,16 @@ Game.Battle.prototype =  {
     },
     
     create:function(){
+		
 		BS = this.add.sprite(0,0,'BasicBattleBG');
+		lyfe = this.add.sprite(0, 0, 'lyfe');
+		lyfe.animations.add('load',[PLive-1]);
+		lyfe.animations.play('load', 1, true);
+		lyfe.fixedToCamera = true
         var Mon = this.add.sprite(0,300,monster)
         Mon.scale.setTo(1)
-		Mon.x = w*(5/6) - Mon.width/2
+		Mon.x = 445 - (Mon.width/2)
+		Mon.y = 425
 		
 		AnswerConfirmationT = this.add.text(0,170,AnswerConfirmation, Bstyle)
 		AnswerConfirmationT.x = 1080/2 - AnswerConfirmationT.width/2
@@ -201,6 +207,7 @@ Game.Battle.prototype =  {
 							Score += 1
 							if(PLive < 3) {
 								PLive += 1
+								localStorage.PLive = PLive
 							}
 							localStorage.Score = Score
 							AnswerConfirmation = ''

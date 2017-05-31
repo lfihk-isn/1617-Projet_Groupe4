@@ -20,11 +20,10 @@ Left = function() {
         ChampSlectX = ChampSlect.length - 1
     }
     Cselect.destroy();
-    Cselect = this.add.sprite(100,100,ChampSlect[ChampSlectX])
-    Cselect.scale.setTo(0.5)
-    Cselect.x = (this.game.width/2)-(Cselect.width/2)
-    Cselect.y = 40
-    ChampName.text = ChampSlect[ChampSlectX]
+    Cselect = this.add.sprite(0,0,ChampSlect[ChampSlectX])
+	this.world.bringToTop(Aleft)
+	this.world.bringToTop(Aright)
+    //ChampName.text = ChampSlect[ChampSlectX]
     
     var Cr = ChampSlect[ChampSlectX] + 'P'
 }
@@ -35,11 +34,10 @@ Right = function() {
         ChampSlectX = 0
     }
     Cselect.destroy();
-    Cselect = this.add.sprite(100,100,ChampSlect[ChampSlectX])
-    Cselect.scale.setTo(0.5)
-    Cselect.x = (this.game.width/2)-(Cselect.width/2)
-    Cselect.y = 40
-    ChampName.text = ChampSlect[ChampSlectX]
+    Cselect = this.add.sprite(0,0,ChampSlect[ChampSlectX])
+	this.world.bringToTop(Aleft)
+	this.world.bringToTop(Aright)
+    //ChampName.text = ChampSlect[ChampSlectX]
     
     var Cr = ChampSlect[ChampSlectX] + 'P'
 }
@@ -63,54 +61,40 @@ Game.CharacterSelect.prototype = {
     },
     
     create: function(){
-        
-    
-        
-        ArrowRight = this.add.text(100, 50, "→", Tstyle);  
-        ArrowRight.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
-        ArrowRight.anchor.setTo(1,0)
-        
-        ArrowLeft = this.add.text(100, 50, "←", Tstyle); 
-        ArrowLeft.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+
+        Cselect = this.add.sprite(0,0,'Knight')
 		
-		Play = this.add.text(100,50,'Start',Tstyle);
+		Aleft = this.add.sprite(0,0,'Arrow')
+		Aleft.y = h - Aleft.height
+
+		Aright = this.add.sprite(0,0,'Arrow')
+		Aright.angle += 180
+		Aright.anchor.setTo(1,1)
+		Aright.y = h - Aright.height
+		Aright.x = w - Aright.width
 		
-        
-        Cselect = this.add.sprite(100,100,'Knight')
-        Cselect.scale.setTo(0.5)
-        Cselect.x = (this.game.width/2)-(Cselect.width/2)
-        
-        Cselect.y = 40
-        
-        ChampName = this.add.text(0,0,ChampSlect[ChampSlectX],Tstyle);
-        ChampName.anchor.setTo(0.5,0.5)
-        ChampName.x = (this.game.width / 2)
-        ChampName.y = Cselect.y + Cselect.height + ChampName.height/2
-        
-        ArrowRight.x = Cselect.x + Cselect.width
-        ArrowRight.y = Cselect.y + Cselect.height
-        
-        ArrowLeft.x = Cselect.x
-        ArrowLeft.y = Cselect.y + Cselect.height
+		Aleft.inputEnabled = true
+		Aleft.events.onInputDown.add(Left,this)
 		
-		Play.x = (1080/2) - (Play.width/2)
-		Play.y = ArrowLeft.y + ArrowLeft.height
-        
-        ArrowLeft.inputEnabled = true
-        ArrowLeft.events.onInputDown.add(Left, this);
-        
-        ArrowRight.inputEnabled = true
-        ArrowRight.events.onInputDown.add(Right, this);
-		
-		Play.inputEnabled = true
-		Play.events.onInputDown.add(start, this);
-        
-       
-        },
+		Aright.inputEnabled = true
+		Aright.events.onInputDown.add(Right,this)
+    },
     
     update: function() {
-
+		
+			if(this.input.activePointer.isDown == true){ //If a Question is Asked get user inputs and checks what answer
+				var x = this.input.activePointer.x
+				var y = this.input.activePointer.y
+				
+				if(x > 258 && x < 258+362 && y > 536 && y < 536+51) {
+					this.start1()
+				}
+			}
     },
+	
+	start1: function() {
+		this.state.start('maze')
+	}
     
         
 }

@@ -15,7 +15,7 @@ var controls = {};
 var Load;
 var i = 0;
 var SpawnTimer = 30000
-var SpawnTimer = 30000 //debug
+var SpawnTimer = 1000 //debug
 var SaveTimer = 5000
 var TileX = 671
 var TileY = 512
@@ -260,10 +260,17 @@ Game.MainGame.prototype =  {
 		MSpawnText.text = ""
 		MSpawnText.fixedToCamera = true
 		this.stage.backgroundColor = '#000000'
+		
+		//LYFE
+		lyfe = this.add.sprite(0, 50, 'lyfe');
+		lyfe.animations.add('load',[PLive-1]);
+		lyfe.animations.play('load', 1, true);
+		lyfe.fixedToCamera = true
+		
     },
     
     update: function() {
-        
+		
         //Every Second
 		//ScoreUpdate
 		ScoreText.text = "Score: " + String(Score)

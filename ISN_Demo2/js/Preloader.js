@@ -17,10 +17,11 @@ Game.Preloader.prototype = {
         this.load.image('menu', 'assets/number-buttons-90x90.png', 270, 180);
        
         //Character Select
-        this.load.image('Knight','assets/Player/Presentation/knight.png')
-        this.load.image('Warrior','assets/Player/Presentation/Warrior.png')
-        this.load.image('Wizard','assets/Player/Presentation/Wizard.png')
-        this.load.image('Fighter','assets/Player/Presentation/Fighter.png')
+        this.load.image('Knight','assets/Player/Presentation/KnightSelect.png')
+        this.load.image('Warrior','assets/Player/Presentation/WarriorGirlSelect.png')
+        this.load.image('Wizard','assets/Player/Presentation/NatureWizardSelect.png')
+        this.load.image('Fighter','assets/Player/Presentation/CyborgSelect.png')
+		this.load.image('Arrow','assets/Player/Presentation/Arrow.png')
 
         //GameCharacter
         this.load.spritesheet('KnightP','assets/Player/Sprites/KnightP.png',671,512,8)
@@ -66,7 +67,8 @@ Game.Preloader.prototype = {
 		this.load.image('TigBattleBG','assets/UI/Tig_Boss_Battle.png')
 		this.load.image('PNJ','assets/Enemy/Sprite/PNJ_Boss.png')
 		this.load.image('PNJBattleBG','assets/UI/PNJ_Boss_Battle.png')
-		
+		//Player
+		this.load.spritesheet('lyfe','assets/UI/Hearts_SpriteSheet.png',216,240/3,3)
         
         
         
@@ -75,7 +77,7 @@ Game.Preloader.prototype = {
 		//Style
 		Bstyle = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 		Tstyle = { font: "bold 64px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-		UIstyle = { font: '24px Arial', fill: '#fff' }
+		UIstyle = { font: '40px Arial', fill: '#fff' }
 		
         //Vars
 		//transfer all vars declaraation here
