@@ -201,7 +201,7 @@ Game.Battle.prototype =  {
 					if(answers[choise] == Mathy) {
 						//Correct
 						this.stage.backgroundColor = '#00FF00'
-						AnswerConfirmation = 'Right'
+						AnswerConfirmation = 'Juste'
 						ELive -= 10
 						if(ELive <= 0) {
 							Score += 1
@@ -219,7 +219,7 @@ Game.Battle.prototype =  {
 						}
 					} else {
 						this.stage.backgroundColor = '#FF0000'
-						AnswerConfirmation = 'Wrong'
+						AnswerConfirmation = 'Faux'
 						//this.camera.shake(0.05, 500);
 						PLive -= 1
 						if(PLive <= 0){

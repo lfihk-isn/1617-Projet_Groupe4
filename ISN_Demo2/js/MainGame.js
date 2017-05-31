@@ -15,7 +15,6 @@ var controls = {};
 var Load;
 var i = 0;
 var SpawnTimer = 30000
-var SpawnTimer = 1000 //debug
 var SaveTimer = 5000
 var TileX = 671
 var TileY = 512

@@ -60,6 +60,7 @@ Game.Preloader.prototype = {
         this.load.image('Bomby','assets/Enemy/Sprite/Bomby.png')
         this.load.image('BookVamp','assets/Enemy/Sprite/BookVamp.png')
         this.load.image('SpectreFloral','assets/Enemy/Sprite/spectrefloral.png')
+		//this.load.spritesheet('Banimation', 'assets/UI/Battle_Transition.png',1080,720,7*9) Baisse trop la performance
         //BOSS
 		this.load.image('Overlord','assets/Enemy/Sprite/ImOverlord_Boss.png')
 		this.load.image('OverlordBattleBG','assets/UI/ImOverlord_Boss_Battle.png')
